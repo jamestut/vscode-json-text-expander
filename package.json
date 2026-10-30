@@ -1,0 +1,34 @@
+{
+  "name": "json-text-expander",
+  "displayName": "JSON Text Expander",
+  "description": "Open JSON strings as read-only plain text in a new tab.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "extensionKind": ["ui"],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jsonTextExpander.openStringAsText",
+        "title": "JSON Text Expander: Open String as Text",
+        "enablement": "editorLangId == json || editorLangId == jsonc || editorLangId == jsonl"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "jsonTextExpander.openStringAsText",
+          "when": "editorLangId == json || editorLangId == jsonc || editorLangId == jsonl",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
+  }
+}
